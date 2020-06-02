@@ -1,4 +1,4 @@
-worker_processes <%= ENV[‘NGINX_WORKERS’] || 4 %>;
+worker_processes 4;
 events {
   use epoll;
   accept_mutex on;
@@ -26,7 +26,7 @@ http {
     server unix:/tmp/nginx.socket fail_timeout=0;
   }
   server {
-    listen <%= ENV[“PORT”] %>;
+    listen 80;
     server_name _;
     keepalive_timeout 5;
     root /app/public; # path to your app
